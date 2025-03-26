@@ -17,4 +17,8 @@ public abstract class Ship {
     public String toString() {
         return name + " (Size: " + size + ", Hits: " + hits + ")";
     }
+
+    public String getName() {
+        return name;
+    }
 }
