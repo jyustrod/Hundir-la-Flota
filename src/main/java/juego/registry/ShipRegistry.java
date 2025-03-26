@@ -1,4 +1,6 @@
-package juego.ships;
+package juego.registry;
+
+import juego.ships.Ship;
 
 import java.util.ArrayList;
 import java.util.HashMap;

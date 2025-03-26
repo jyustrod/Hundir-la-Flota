@@ -2,18 +2,26 @@ package juego;
 
 import juego.ships.Ship;
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Entity
 public class Player {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
-    private List<Ship> ships;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ship> ships = new ArrayList<>();
 
     public Player(String name) {
         this.name = name;
-        this.ships = new ArrayList<>();
     }
+
+    public Player() {}
 
     public void addShip(Ship ship) {
         ships.add(ship);
@@ -25,10 +33,10 @@ public class Player {
 
         Ship target = opponent.ships.get(random.nextInt(opponent.ships.size()));
         target.hit();
-        System.out.println(name + " ha atacado al barco " + target.getName() + " de " + opponent.name);
+        System.out.println(name + " attacked " + opponent.name + "'s " + target.getName());
 
         if (target.isSunk()) {
-            System.out.println(target.getName() + " se ha hundido!");
+            System.out.println(target.getName() + " has been sunk!");
             opponent.ships.remove(target);
         }
         return true;
