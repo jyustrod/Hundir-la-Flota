@@ -3,7 +3,7 @@ package juego;
 import juego.builders.GameBuilder;
 import juego.builders.ShipBuilder;
 import juego.ships.Ship;
-import juego.ships.ShipRegistry;
+import juego.registry.ShipRegistry;
 
 import java.util.Scanner;
 
